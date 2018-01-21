@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+
+<title>Compaign Framework(营销活动框架)</title>
+<meta charset="utf-8" />
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<!-- jQuery -->
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#eval").click(function () {
+				$.ajax({
+					url: "/eval?script=" + $("#script").val(),
+					dataType: "json",
+					success: function (msg) {
+						$("#console").append(JSON.stringify(msg) + " <br />");
+					},
+					error: function (msg) {
+						alert(JSON.stringify(msg));
+					},
+				})
+			});
+
+			$("#clear").click(function () {
+				$("#console").empty();
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<header>
+		<h1>Compaign Framework(营销活动框架)</h1>
+	</header>
+
+	<nav>
+
+	</nav>
+
+	<section>
+		<h3>Groovy script</h3>
+		<textarea id="script" rows="10" cols="100">
+import jie.cf.demo.Demo;
+Demo demo = context.getBean(Demo.class);
+// 测试数据准备，写入数据库 demo.createData();
+// 参加活动 demo.campaign();
+// 派发票券 demo.distribute();
+// 使用票券 demo.use();
+// 兑换票券 demo.exchange();
+// 微信“好友帮砍价”- 发起 demo.wechatCampaignInitiate();
+// 微信“好友帮砍价”- 参与 demo.wechatCampaignParticipate();
+		</textarea>
+		<br />
+		<button id="eval">eval</button>
+		<hr />
+		<button id="clear">clear</button>
+		<div id="console" />
+	</section>
+
+	<footer>
+		<p>Jie &copy; 2017. All rights reserved.</p>
+	</footer>
+
+</body>
+
+</html>

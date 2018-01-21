@@ -1,0 +1,31 @@
+header, footer, nav, section, article {
+	margin: 5px;
+	background-color: write;
+	padding: 5px;
+}
+
+header, footer {
+	color: white;
+	background-color: black;
+	text-align: center;
+}
+
+section {
+	background-color: #ddd;
+}
+
+nav {
+	background-color: #D3D3D3;
+}
+
+span.red {
+	color: red;
+}
+
+button {
+	background-color: #D43C33;
+	color: white;
+	border: none;
+	font-size: 16px;
+	padding: 8px 28px;
+}

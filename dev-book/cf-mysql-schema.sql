@@ -1,0 +1,79 @@
+CREATE TABLE CfCampaign (
+Id INT(8) NOT NULL AUTO_INCREMENT,
+Code VARCHAR(64) NOT NULL,
+Name VARCHAR(64),
+Status VARCHAR(64),
+StatusDate DATETIME,
+StartDate DATETIME,
+EndDate DATETIME,
+Description VARCHAR(1024),
+UNIQUE(Code),
+CONSTRAINT pk PRIMARY KEY (Id)
+);
+CREATE TABLE CfCampaignEvent (
+Id INT(8) NOT NULL AUTO_INCREMENT,
+CampaignId INT(8),
+Code VARCHAR(64) NOT NULL,
+Name VARCHAR(64),
+Description VARCHAR(1024),
+UNIQUE(Code),
+CONSTRAINT pk PRIMARY KEY (Id)
+);
+CREATE TABLE CfCampaignRule (
+Id INT(8) NOT NULL AUTO_INCREMENT,
+CampaignId INT(8),
+CampaignEventId INT(8),
+Name VARCHAR(64),
+Type VARCHAR(64),
+GroovyCondition VARCHAR(1024),
+GroovyBody VARCHAR(1024),
+StartDate DATETIME,
+EndDate DATETIME,
+CONSTRAINT pk PRIMARY KEY (Id)
+);
+CREATE TABLE CfCampaignResponse (
+Id INT(8) NOT NULL AUTO_INCREMENT,
+CampaignId INT(8),
+CampaignEventId INT(8),
+CampaignRuleId INT(8),
+ClientId INT(8),
+Mobile VARCHAR(64),
+OpenId VARCHAR(128),
+Status VARCHAR(64),
+StatusDate DATETIME,
+Reserved VARCHAR(1024),
+CONSTRAINT pk PRIMARY KEY (Id)
+);
+CREATE TABLE CfCampaignCoupon (
+Id INT(8) NOT NULL AUTO_INCREMENT,
+CampaignId INT(8),
+CampaignEventId INT(8),
+Code VARCHAR(64) NOT NULL,
+Name VARCHAR(64),
+Type VARCHAR(64),
+TotalAmount INT(8),
+AvailableAmount INT(8),
+StartDate DATETIME,
+EndDate DATETIME,
+Description VARCHAR(1024),
+UNIQUE(Code),
+CONSTRAINT pk PRIMARY KEY (Id)
+);
+CREATE TABLE CfCampaignCouponItem (
+Id INT(8) NOT NULL AUTO_INCREMENT,
+CampaignId INT(8),
+CampaignEventId INT(8),
+CampaignCouponId INT(8),
+Type VARCHAR(64),
+SerialNumber VARCHAR(128),
+Status VARCHAR(64),
+StatusDate DATETIME,
+ClientId INT(8),
+Mobile VARCHAR(64),
+OpenId VARCHAR(128),
+BindingDate DATETIME,
+StartDate DATETIME,
+EndDate DATETIME,
+Description VARCHAR(1024),
+CONSTRAINT pk PRIMARY KEY (Id)
+);
